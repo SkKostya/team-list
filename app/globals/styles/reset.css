@@ -13,6 +13,7 @@ a {
   color: inherit;
 }
 
+input,
 button {
   background-color: transparent;
   outline: 0;
