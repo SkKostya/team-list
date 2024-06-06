@@ -1,0 +1,21 @@
+.avatar {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  overflow: hidden;
+
+  & .avatar__image {
+    height: 100%;
+    object-fit: cover;
+  }
+
+  & .avatar__icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    padding: 15px;
+    background-color: #ebebf0;
+  }
+}
