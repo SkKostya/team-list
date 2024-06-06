@@ -1,0 +1,35 @@
+.checkbox {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  cursor: pointer;
+
+  & .checkbox__field {
+    display: none;
+  }
+
+  & .checkbox__view {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 16px;
+    height: 16px;
+    border: 1px solid #c1c1cb;
+    border-radius: 5px;
+  }
+
+  & .checkbox__field:checked + .checkbox__view {
+    border: none;
+    background-color: #5856d6;
+  }
+
+  & .checkbox__text {
+    font-size: 16px;
+    line-height: 20px;
+    color: #424f5e;
+
+    &.checkbox__text--dim {
+      color: #9494a0;
+    }
+  }
+}

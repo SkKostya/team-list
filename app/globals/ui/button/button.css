@@ -1,0 +1,18 @@
+.button {
+  display: inline-block;
+  padding: 20px 16px;
+  width: 100%;
+  border-radius: 15px;
+  text-align: center;
+  font-weight: 450;
+  font-size: 20px;
+  line-height: 20px;
+  color: #f9fafb;
+  background-color: #32c076;
+
+  &.button--small {
+    padding: 8px 12px;
+    border-radius: 10px;
+    font-size: 18px;
+  }
+}
