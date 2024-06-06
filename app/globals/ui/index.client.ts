@@ -5,3 +5,4 @@ export { default as ContextMenu } from './context-menu';
 export { default as Input } from './input';
 export { default as Checkbox } from './checkbox';
 export { default as CheckboxSelect } from './checkbox-select';
+export { default as Modal } from './modal';
