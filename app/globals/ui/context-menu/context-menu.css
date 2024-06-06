@@ -1,6 +1,5 @@
 .context-menu {
   position: relative;
-  margin-left: 500px;
   width: max-content;
 
   & .context-menu__icon {

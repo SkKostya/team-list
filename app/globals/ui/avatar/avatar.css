@@ -1,4 +1,6 @@
 .avatar {
+  min-width: 55px;
+  min-height: 55px;
   width: 64px;
   height: 64px;
   border-radius: 50%;
@@ -17,5 +19,9 @@
     height: 100%;
     padding: 15px;
     background-color: #ebebf0;
+
+    & svg {
+      min-width: 34px;
+    }
   }
 }
