@@ -4,7 +4,7 @@ import './button.css';
 type Sizes = 'small' | 'medium';
 
 interface IProps {
-  text: string;
+  children: React.ReactElement | string;
   onClick: () => void;
   size?: Sizes;
 }
@@ -14,10 +14,10 @@ const buttonSizes: Record<Sizes, string> = {
   medium: '',
 };
 
-const Button: React.FC<IProps> = ({ text, onClick, size = 'medium' }) => {
+const Button: React.FC<IProps> = ({ children, onClick, size = 'medium' }) => {
   return (
     <button onClick={onClick} className={`button ${buttonSizes[size]}`}>
-      {text}
+      {children}
     </button>
   );
 };
