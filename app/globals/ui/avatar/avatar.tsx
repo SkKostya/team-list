@@ -4,7 +4,7 @@ import './avatar.css';
 import { useState } from 'react';
 import Image from 'next/image';
 
-import { Icons } from '..';
+import { Icons } from '../index.server';
 
 interface IProps {
   image?: string;
