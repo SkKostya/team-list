@@ -18,3 +18,10 @@ button {
   outline: 0;
   border: none;
 }
+
+ul,
+ol {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
