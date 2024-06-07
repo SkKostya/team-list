@@ -19,6 +19,9 @@ button {
   outline: 0;
   border: none;
 }
+button {
+  cursor: pointer;
+}
 
 ul,
 ol {

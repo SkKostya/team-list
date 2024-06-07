@@ -8,6 +8,7 @@ interface IProps {
   children: React.ReactElement | string;
   onClick: (event: MouseEvent<HTMLButtonElement>) => void;
   size?: Sizes;
+  buttonClass?: string;
 }
 
 const buttonSizes: Record<Sizes, string> = {
@@ -15,9 +16,17 @@ const buttonSizes: Record<Sizes, string> = {
   medium: '',
 };
 
-const Button: React.FC<IProps> = ({ children, onClick, size = 'medium' }) => {
+const Button: React.FC<IProps> = ({
+  children,
+  onClick,
+  size = 'medium',
+  buttonClass = '',
+}) => {
   return (
-    <button onClick={onClick} className={`button ${buttonSizes[size]}`}>
+    <button
+      onClick={onClick}
+      className={`button ${buttonSizes[size]} ${buttonClass}`}
+    >
       {children}
     </button>
   );

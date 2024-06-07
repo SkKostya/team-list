@@ -1,28 +1,23 @@
 'use client';
+import './home.css';
 
-import { Employee, InviteEmployee } from './entities';
+import { useState } from 'react';
+
+import { MainMenu } from './entities';
+import { EmployeesList } from './widgets';
 
 export default function Home() {
-  return (
-    <main>
-      <InviteEmployee
-        isOpened={true}
-        onClose={() => null}
-        onInvite={() => null}
-      />
+  const [isMenuOpened, setIsMenuOpened] = useState(false);
 
-      <Employee
-        id="asdf"
-        avatar=""
-        name="Пользователь"
-        email="example@email.com"
-        roles={['Модерация объявлений']}
-        isAdmin={false}
-        isAuthorized={false}
-        onEditRoles={(id) => null}
-        onResentCode={() => null}
-        onDelete={() => null}
-      />
+  return (
+    <main className="home">
+      <aside className="home__menu">
+        <MainMenu isMenuOpened={isMenuOpened} onCloseMenu={setIsMenuOpened} />
+      </aside>
+
+      <div className="home__content">
+        <EmployeesList onOpenMenu={setIsMenuOpened} />
+      </div>
     </main>
   );
 }

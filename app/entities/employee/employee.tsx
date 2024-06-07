@@ -14,9 +14,9 @@ interface IProps {
   roles: string[];
   isAdmin?: boolean;
   isAuthorized?: boolean;
-  onEditRoles: (id: string) => null;
-  onResentCode: (id: string) => null;
-  onDelete: (id: string) => null;
+  onEditRoles: (id: string) => void;
+  onResentCode: (id: string) => void;
+  onDelete: (id: string) => void;
 }
 
 const Employee: React.FC<IProps> = ({
@@ -50,7 +50,7 @@ const Employee: React.FC<IProps> = ({
 
         <div className="employee__tags">
           {isAdmin ? (
-            <Tag text="Администратор" />
+            <Tag text="Администратор" color="blue" />
           ) : (
             roles.map((role) => <Tag key={role} text={role} />)
           )}

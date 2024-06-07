@@ -11,35 +11,33 @@ import {
 } from '@/app/globals/ui/index.client';
 import { Icons } from '@/app/globals/ui/index.server';
 
-import { ROLES, RolesListInterface } from '../../globals/constants';
+import { ROLES } from '../../globals/constants';
 
 interface IProps {
   isOpened: boolean;
   onClose: () => void;
-  onInvite: (email: string, roles: RolesListInterface[]) => void;
+  onInvite: (email: string, roles: string[]) => void;
 }
 
 const ALL = 'Все';
 
 const InviteEmployee: React.FC<IProps> = ({ isOpened, onClose, onInvite }) => {
   const [email, setEmail] = useState('');
-  const [roles, setRoles] = useState<RolesListInterface[]>([]);
+  const [roles, setRoles] = useState<string[]>([]);
 
-  const handleRolesChanged = (role: RolesListInterface) => {
+  const handleRolesChanged = (role: string) => {
     const newRoles = roles.slice();
 
-    if (role.key === ALL) {
+    if (role === ALL) {
       const shouldAddAll = newRoles.length !== ROLES.length;
       setRoles(shouldAddAll ? ROLES : []);
       return;
     }
 
-    const currentRoleIndex = newRoles.findIndex(
-      (item) => item.key === role.key
-    );
+    const currentRoleIndex = newRoles.findIndex((item) => item === role);
     if (currentRoleIndex !== -1) {
       newRoles.splice(currentRoleIndex, 1);
-      const allTabIndex = newRoles.findIndex((item) => item.key === ALL);
+      const allTabIndex = newRoles.findIndex((item) => item === ALL);
       allTabIndex !== -1 && newRoles.splice(allTabIndex, 1);
     } else {
       newRoles.push(role);
@@ -53,7 +51,7 @@ const InviteEmployee: React.FC<IProps> = ({ isOpened, onClose, onInvite }) => {
   return (
     <Modal isOpened={isOpened} onClose={onClose}>
       <div className="invite-employee">
-        <button className="invite-employee__cross">
+        <button onClick={onClose} className="invite-employee__cross">
           <Icons.Cross />
         </button>
         <div className="invite-employee__title">Отправьте приглашение</div>
@@ -67,7 +65,7 @@ const InviteEmployee: React.FC<IProps> = ({ isOpened, onClose, onInvite }) => {
             options={ROLES}
             onChange={handleRolesChanged}
             placeholder="Выберите права доступа"
-            allText={ROLES[0].value}
+            allText={ROLES[0]}
           />
 
           <div className="invite-employee__button">
