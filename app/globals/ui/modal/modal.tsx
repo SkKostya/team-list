@@ -9,7 +9,7 @@ interface IProps {
   onClose: (isOpened: boolean) => void;
 }
 
-const ComponentName: React.FC<IProps> = ({ children, isOpened, onClose }) => {
+const Modal: React.FC<IProps> = ({ children, isOpened, onClose }) => {
   return (
     <>
       {createPortal(
@@ -27,4 +27,4 @@ const ComponentName: React.FC<IProps> = ({ children, isOpened, onClose }) => {
   );
 };
 
-export default ComponentName;
+export default Modal;

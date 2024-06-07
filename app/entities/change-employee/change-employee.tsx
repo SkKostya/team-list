@@ -2,9 +2,11 @@
 import './change-employee.css';
 
 import { useEffect, useState } from 'react';
+import dynamic from 'next/dynamic';
 
-import { Button, CheckboxSelect, Modal } from '@/app/globals/ui/index.client';
+import { Button, CheckboxSelect } from '@/app/globals/ui/index.client';
 import { Icons } from '@/app/globals/ui/index.server';
+const Modal = dynamic(() => import('../../globals/ui/modal'), { ssr: false });
 
 import { ROLES } from '../../globals/constants';
 

@@ -1,6 +1,9 @@
 import './success-invited.css';
 
-import { Button, Modal } from '@/app/globals/ui/index.client';
+import dynamic from 'next/dynamic';
+
+import { Button } from '@/app/globals/ui/index.client';
+const Modal = dynamic(() => import('../../globals/ui/modal'), { ssr: false });
 
 interface IProps {
   email: string;
