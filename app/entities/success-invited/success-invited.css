@@ -1,0 +1,32 @@
+.success-invited {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  padding: 40px 48px 42px;
+  border-radius: 25px;
+  box-shadow: -30px 30px 50px 0px #1c1c1e1a;
+  background-color: #f9fafb;
+
+  & .success-invited__title {
+    max-width: 404px;
+    width: 100%;
+    text-align: center;
+    font-family: 'Futura PT Demi', serif;
+    font-weight: 600;
+    font-size: 22px;
+    line-height: 26.4px;
+    color: #424f5e;
+  }
+
+  & .success-invited__button {
+    max-width: 404px;
+    width: 100%;
+  }
+}
+
+@media (max-width: 580px) {
+  .success-invited {
+    padding: 32px 24px;
+  }
+}

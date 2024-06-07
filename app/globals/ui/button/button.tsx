@@ -1,11 +1,12 @@
 'use client';
+import { MouseEvent } from 'react';
 import './button.css';
 
 type Sizes = 'small' | 'medium';
 
 interface IProps {
-  text: string;
-  onClick: () => void;
+  children: React.ReactElement | string;
+  onClick: (event: MouseEvent<HTMLButtonElement>) => void;
   size?: Sizes;
 }
 
@@ -14,10 +15,10 @@ const buttonSizes: Record<Sizes, string> = {
   medium: '',
 };
 
-const Button: React.FC<IProps> = ({ text, onClick, size = 'medium' }) => {
+const Button: React.FC<IProps> = ({ children, onClick, size = 'medium' }) => {
   return (
     <button onClick={onClick} className={`button ${buttonSizes[size]}`}>
-      {text}
+      {children}
     </button>
   );
 };

@@ -20,17 +20,15 @@ interface IProps {
 
 const ContextMenu = ({ isOpened, setIsOpened, linksList }: IProps) => {
   return (
-    <div className="context-menu">
-      <button
-        onClick={() => setIsOpened(!isOpened)}
-        className="context-menu__icon"
-      >
-        <Icons.ThreeDots />
-      </button>
+    <OutsideClickHandler onOutsideClick={() => isOpened && setIsOpened(false)}>
+      <div className="context-menu">
+        <button
+          onClick={() => setIsOpened(!isOpened)}
+          className="context-menu__icon"
+        >
+          <Icons.ThreeDots />
+        </button>
 
-      <OutsideClickHandler
-        onOutsideClick={() => isOpened && setIsOpened(false)}
-      >
         <div
           className={`context-menu__dropdown ${
             isOpened ? 'context-menu__dropdown--opened' : ''
@@ -50,8 +48,8 @@ const ContextMenu = ({ isOpened, setIsOpened, linksList }: IProps) => {
             ))}
           </ul>
         </div>
-      </OutsideClickHandler>
-    </div>
+      </div>
+    </OutsideClickHandler>
   );
 };
 
