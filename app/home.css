@@ -1,0 +1,10 @@
+.home {
+  display: flex;
+
+  & .home__content {
+    margin: 0 auto;
+    padding: 16px 24px;
+    max-width: 1135px;
+    width: 100%;
+  }
+}

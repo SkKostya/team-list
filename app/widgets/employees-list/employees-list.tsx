@@ -4,6 +4,7 @@ import './employees-list.css';
 import { useEffect, useState } from 'react';
 
 import { Button } from '@/app/globals/ui/index.client';
+import { Icons } from '@/app/globals/ui/index.server';
 import {
   ChangeEmployee,
   DeleteEmployee,
@@ -11,12 +12,17 @@ import {
   InviteEmployee,
   SuccessInvited,
 } from '@/app/entities';
+
 import SearchField from './search-field';
 
 const fetchUrl =
   'https://file.notion.so/f/f/9a782e33-389d-49d2-9fb2-bb2fa36b755c/b697dfd0-4a6f-4555-bd14-60559f2a8179/users.json?id=b2eae78e-4619-4bac-8e05-6deef2d9d37b&table=block&spaceId=9a782e33-389d-49d2-9fb2-bb2fa36b755c&expirationTimestamp=1717826400000&signature=CkoN0JWw0-1rWz2PMkIY09wOYuHazpyhub29QxnL_5g&downloadName=users.json';
 
-const EmployeesList: React.FC = () => {
+interface IProps {
+  onOpenMenu: (opened: true) => void;
+}
+
+const EmployeesList: React.FC<IProps> = ({ onOpenMenu }) => {
   const [employees, setEmployees] = useState<Employee[]>([]);
 
   const [search, setSearch] = useState('');
@@ -75,7 +81,15 @@ const EmployeesList: React.FC = () => {
     <>
       <div className="employees-list">
         <div className="employees-list__header">
-          <h1 className="employees-list__title">Команда</h1>
+          <div className="employees-list__mobile-control">
+            <button
+              onClick={() => onOpenMenu(true)}
+              className="employees-list__burger"
+            >
+              <Icons.BurgerMenu />
+            </button>
+            <h1 className="employees-list__title">Команда</h1>
+          </div>
 
           <div className="employees-list__search">
             <SearchField searchValue={search} onChange={setSearch} />

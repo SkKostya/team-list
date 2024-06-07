@@ -10,6 +10,10 @@
     gap: 7px 10px;
   }
 
+  & .employees-list__burger {
+    display: none;
+  }
+
   & .employees-list__title {
     margin: 0;
     font-family: 'Futura PT', serif;
@@ -45,7 +49,7 @@
   }
 }
 
-@media (max-width: 640px) {
+@media (max-width: 740px) {
   .employees-list {
     & .employees-list__header {
       flex-direction: column;
@@ -58,6 +62,20 @@
 
     & .employees-list__add-button {
       width: 100%;
+    }
+  }
+}
+
+@media (max-width: 680px) {
+  .employees-list {
+    & .employees-list__mobile-control {
+      display: flex;
+      align-items: baseline;
+      gap: 12px;
+    }
+
+    & .employees-list__burger {
+      display: block;
     }
   }
 }
