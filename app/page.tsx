@@ -1,11 +1,16 @@
 'use client';
 
-import { Employee } from './entities';
-import { CheckboxSelect } from './globals/ui/index.client';
+import { Employee, InviteEmployee } from './entities';
 
 export default function Home() {
   return (
     <main>
+      <InviteEmployee
+        isOpened={true}
+        onClose={() => null}
+        onInvite={() => null}
+      />
+
       <Employee
         id="asdf"
         avatar=""
@@ -17,27 +22,6 @@ export default function Home() {
         onEditRoles={(id) => null}
         onResentCode={() => null}
         onDelete={() => null}
-      />
-
-      <CheckboxSelect
-        selectedValues={[
-          { key: 'Модерация объявлений', value: 'Модерация объявлений' },
-          { key: 'Обращения клиентов', value: 'Обращения клиентов' },
-          { key: 'Аналитика', value: 'Аналитика' },
-          { key: 'Акции', value: 'Акции' },
-        ]}
-        options={[
-          { key: 'Все', value: 'Все' },
-          { key: 'Модерация объявлений', value: 'Модерация объявлений' },
-          { key: 'Блог', value: 'Блог' },
-          { key: 'Тех. поддержка', value: 'Тех. поддержка' },
-          { key: 'Обращения клиентов', value: 'Обращения клиентов' },
-          { key: 'Аналитика', value: 'Аналитика' },
-          { key: 'Акции', value: 'Акции' },
-        ]}
-        onChange={() => null}
-        placeholder="Выберите права доступа"
-        allText="All"
       />
     </main>
   );

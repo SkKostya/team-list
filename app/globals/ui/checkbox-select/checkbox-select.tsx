@@ -5,15 +5,12 @@ import { useState } from 'react';
 
 import { Checkbox, OutsideClickHandler } from '../index.client';
 
-interface IOption {
-  key: string;
-  value: string;
-}
+import { RolesListInterface } from '../../constants';
 
 interface IProps {
-  selectedValues: IOption[];
-  options: IOption[];
-  onChange: (option: IOption) => void;
+  selectedValues: RolesListInterface[];
+  options: RolesListInterface[];
+  onChange: (option: RolesListInterface) => void;
   placeholder: string;
   allText?: string;
 }

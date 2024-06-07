@@ -1,28 +1,30 @@
 'use client';
-import './invite-employee.css';
+import './change-employee.css';
 
 import { useState } from 'react';
 
-import {
-  Button,
-  CheckboxSelect,
-  Input,
-  Modal,
-} from '@/app/globals/ui/index.client';
+import { Button, CheckboxSelect, Modal } from '@/app/globals/ui/index.client';
 import { Icons } from '@/app/globals/ui/index.server';
 
 import { ROLES, RolesListInterface } from '../../globals/constants';
 
 interface IProps {
+  email: string;
+  initialRoles: RolesListInterface[];
   isOpened: boolean;
   onClose: () => void;
-  onInvite: (email: string, roles: RolesListInterface[]) => void;
+  onChange: (email: string, roles: RolesListInterface[]) => void;
 }
 
 const ALL = 'Все';
 
-const InviteEmployee: React.FC<IProps> = ({ isOpened, onClose, onInvite }) => {
-  const [email, setEmail] = useState('');
+const ChangeEmployee: React.FC<IProps> = ({
+  email,
+  initialRoles,
+  isOpened,
+  onClose,
+  onChange,
+}) => {
   const [roles, setRoles] = useState<RolesListInterface[]>([]);
 
   const handleRolesChanged = (role: RolesListInterface) => {
@@ -52,16 +54,14 @@ const InviteEmployee: React.FC<IProps> = ({ isOpened, onClose, onInvite }) => {
 
   return (
     <Modal isOpened={isOpened} onClose={onClose}>
-      <div className="invite-employee">
-        <button className="invite-employee__cross">
+      <div className="change-employee">
+        <button className="change-employee__cross">
           <Icons.Cross />
         </button>
-        <div className="invite-employee__title">Отправьте приглашение</div>
+        <div className="change-employee__title">Изменение прав</div>
 
         {/* TODO: Добавить валидацию формы */}
-        <form className="invite-employee__form">
-          <Input value={email} onChange={setEmail} placeholder="Email" />
-
+        <form className="change-employee__form">
           <CheckboxSelect
             selectedValues={roles}
             options={ROLES}
@@ -70,14 +70,14 @@ const InviteEmployee: React.FC<IProps> = ({ isOpened, onClose, onInvite }) => {
             allText={ROLES[0].value}
           />
 
-          <div className="invite-employee__button">
+          <div className="change-employee__button">
             <Button
               onClick={(e) => {
                 e.preventDefault();
-                onInvite(email, roles);
+                onChange(email, roles);
               }}
             >
-              Отправить приглашение
+              Изменить права
             </Button>
           </div>
         </form>
@@ -86,4 +86,4 @@ const InviteEmployee: React.FC<IProps> = ({ isOpened, onClose, onInvite }) => {
   );
 };
 
-export default InviteEmployee;
+export default ChangeEmployee;

@@ -1,11 +1,12 @@
 'use client';
+import { MouseEvent } from 'react';
 import './button.css';
 
 type Sizes = 'small' | 'medium';
 
 interface IProps {
   children: React.ReactElement | string;
-  onClick: () => void;
+  onClick: (event: MouseEvent<HTMLButtonElement>) => void;
   size?: Sizes;
 }
 
