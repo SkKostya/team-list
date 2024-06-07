@@ -1,0 +1,63 @@
+.employees-list {
+  padding: 16px 0;
+  border-radius: 15px;
+  background-color: #f9fafb;
+
+  & .employees-list__header {
+    display: flex;
+    align-items: center;
+    padding: 0 29px;
+    gap: 7px 10px;
+  }
+
+  & .employees-list__title {
+    margin: 0;
+    font-family: 'Futura PT', serif;
+    font-weight: 500;
+    font-size: 26px;
+    line-height: 44px;
+    color: #424f5e;
+  }
+
+  & .employees-list__search {
+    margin-left: auto;
+    max-width: 649px;
+    width: 100%;
+  }
+
+  & .employees-list__add-button {
+    padding-inline: 16px;
+    width: max-content;
+    min-width: 218px;
+  }
+
+  & .employees-list__wrapper {
+    margin-top: 18px;
+  }
+
+  & .employees-list__item {
+    padding: 16px 24px;
+    transition: all 0.1s linear;
+
+    &:hover {
+      background-color: #efeff6;
+    }
+  }
+}
+
+@media (max-width: 640px) {
+  .employees-list {
+    & .employees-list__header {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    & .employees-list__search {
+      margin-top: 6px;
+    }
+
+    & .employees-list__add-button {
+      width: 100%;
+    }
+  }
+}

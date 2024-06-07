@@ -1,19 +1,19 @@
 'use client';
 import './change-employee.css';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import { Button, CheckboxSelect, Modal } from '@/app/globals/ui/index.client';
 import { Icons } from '@/app/globals/ui/index.server';
 
-import { ROLES, RolesListInterface } from '../../globals/constants';
+import { ROLES } from '../../globals/constants';
 
 interface IProps {
   email: string;
-  initialRoles: RolesListInterface[];
+  initialRoles: string[];
   isOpened: boolean;
   onClose: () => void;
-  onChange: (email: string, roles: RolesListInterface[]) => void;
+  onChange: (email: string, roles: string[]) => void;
 }
 
 const ALL = 'Все';
@@ -25,23 +25,27 @@ const ChangeEmployee: React.FC<IProps> = ({
   onClose,
   onChange,
 }) => {
-  const [roles, setRoles] = useState<RolesListInterface[]>([]);
+  const [roles, setRoles] = useState<string[]>(initialRoles);
 
-  const handleRolesChanged = (role: RolesListInterface) => {
+  useEffect(() => {
+    if (isOpened === true) {
+      setRoles(initialRoles);
+    }
+  }, [isOpened, initialRoles]);
+
+  const handleRolesChanged = (role: string) => {
     const newRoles = roles.slice();
 
-    if (role.key === ALL) {
+    if (role === ALL) {
       const shouldAddAll = newRoles.length !== ROLES.length;
       setRoles(shouldAddAll ? ROLES : []);
       return;
     }
 
-    const currentRoleIndex = newRoles.findIndex(
-      (item) => item.key === role.key
-    );
+    const currentRoleIndex = newRoles.findIndex((item) => item === role);
     if (currentRoleIndex !== -1) {
       newRoles.splice(currentRoleIndex, 1);
-      const allTabIndex = newRoles.findIndex((item) => item.key === ALL);
+      const allTabIndex = newRoles.findIndex((item) => item === ALL);
       allTabIndex !== -1 && newRoles.splice(allTabIndex, 1);
     } else {
       newRoles.push(role);
@@ -55,7 +59,7 @@ const ChangeEmployee: React.FC<IProps> = ({
   return (
     <Modal isOpened={isOpened} onClose={onClose}>
       <div className="change-employee">
-        <button className="change-employee__cross">
+        <button onClick={onClose} className="change-employee__cross">
           <Icons.Cross />
         </button>
         <div className="change-employee__title">Изменение прав</div>
@@ -67,7 +71,7 @@ const ChangeEmployee: React.FC<IProps> = ({
             options={ROLES}
             onChange={handleRolesChanged}
             placeholder="Выберите права доступа"
-            allText={ROLES[0].value}
+            allText={ROLES[0]}
           />
 
           <div className="change-employee__button">

@@ -5,12 +5,10 @@ import { useState } from 'react';
 
 import { Checkbox, OutsideClickHandler } from '../index.client';
 
-import { RolesListInterface } from '../../constants';
-
 interface IProps {
-  selectedValues: RolesListInterface[];
-  options: RolesListInterface[];
-  onChange: (option: RolesListInterface) => void;
+  selectedValues: string[];
+  options: string[];
+  onChange: (option: string) => void;
   placeholder: string;
   allText?: string;
 }
@@ -41,8 +39,8 @@ const CheckboxSelect: React.FC<IProps> = ({
                 {selectedValues.length === options.length
                   ? allText
                   : selectedValues.reduce((res, option) => {
-                      if (res) res += `, ${option.value}`;
-                      else res = option.value;
+                      if (res) res += `, ${option}`;
+                      else res = option;
                       return res;
                     }, '')}
               </span>
@@ -73,13 +71,11 @@ const CheckboxSelect: React.FC<IProps> = ({
           }`}
         >
           {options.map((item) => (
-            <li key={item.key} className="checkbox-select__item">
+            <li key={item} className="checkbox-select__item">
               <Checkbox
-                checked={selectedValues.some(
-                  (selected) => selected.key === item.key
-                )}
+                checked={selectedValues.some((selected) => selected === item)}
                 onChange={() => onChange(item)}
-                text={item.value}
+                text={item}
               />
             </li>
           ))}
